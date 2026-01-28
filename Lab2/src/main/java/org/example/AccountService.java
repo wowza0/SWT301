@@ -15,7 +15,6 @@ public class AccountService {
         System.out.println("---------------------------------------------------------------------------");
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-            // Bỏ qua dòng tiêu đề
             br.readLine();
 
             while ((line = br.readLine()) != null) {
@@ -29,7 +28,7 @@ public class AccountService {
                 Account acc = new Account(user, pass, email);
                 boolean actual = acc.registerAccount();
 
-                String status = (actual == expected) ? "✅ PASS" : "❌ FAIL";
+                String status = (actual == expected) ? "PASS" : "FAIL";
 
                 System.out.println(String.format("%-10s | %-15s | %-20s | %-10b | %-10s",
                         user, pass, email, expected, status));
@@ -39,3 +38,4 @@ public class AccountService {
         }
     }
 }
+
