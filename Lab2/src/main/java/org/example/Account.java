@@ -13,13 +13,11 @@ public class Account {
         this.email = email;
     }
 
-    // Kiểm tra định dạng Email
     public boolean isValidEmail(String email) {
         String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
         return Pattern.compile(emailRegex).matcher(email).matches();
     }
 
-    // Kiểm tra Password: > 6 ký tự, 1 hoa, 1 thường, 1 đặc biệt
     private boolean isValidPassword(String password) {
         if (password.length() <= 6) return false;
         boolean hasUpper = !password.equals(password.toLowerCase());
@@ -28,7 +26,6 @@ public class Account {
         return hasUpper && hasLower && hasSpecial;
     }
 
-    // Đăng ký tài khoản dựa trên các quy tắc
     public boolean registerAccount() {
         if (username == null || username.length() < 3) return false;
         if (!isValidPassword(password)) return false;
